@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by Kidd5kali (http://jsbin.com/lofizad/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Iceberg|Keania+One|Montaga|Rubik+Mono+One|Righteous" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style/nagypenteki.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<style id="jsbin-css">
+#navbar {
+    width: 23%;
+    height: 100%;
+    background-color: #708090;
+    position: fixed;
+    font-family: 'Righteous', cursive;
+    font-size: 40px;
+    color: #afb8c1;
+}
+
+ul {
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    width: 200px;
+    border: 2px solid #555;
+    position: absolute;
+    top: 280px;
+    right: 5px;
+    }
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #afb8c1;
+}
+
+li {
+    text-align: center;
+    border-bottom: 1px solid #555;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+#firm {
+    width: auto;
+    position: relative;
+    text-align: center;
+    top: 50px;
+    left: 30%;
+}
+
+table {
+    font-family: 'Righteous', cursive;
+    color: #dce0e4;
+    display: block;
+    height: 738px;
+    width: 400px;
+    transform:rotate(10deg);
+}
+
+.bigTable {
+   border-spacing: 8px 300px;
+   font-size: 30px;
+}
+
+.smallTable {
+    border-spacing: 8px 80px;
+    font-size: 25px;
+    
+}
+
+#users {
+    position: fixed;
+    left: 23.5%;
+    border: 1px dotted black;
+    display: table;
+    background-color: #737090;
+    width: 25%;    
+}
+
+#orders {
+    position: fixed;
+    left: 46%;
+    border: 1px dotted black;
+    display: table;
+    background-color: #708690;
+    width: 25%; 
+}
+
+#products {
+    position: fixed;
+    left: 72%;
+    border: 1px dotted black;
+    display: table;
+    background-color: #737090;
+    width: 25%;
+    height: 80%;
+}
+
+#admins {
+    position: fixed;
+    left: 72%;
+    border: 1px dotted black;
+    display: table;
+    background-color: #709070;
+    width: 25%;
+    height: 100px;
+    top: 600px;
+}
+</style>
+</head>
+<body>
+    <div id="navbar">
+        <span id="firm">Cégnév</span>
+        <ul>
+            <li><a href="#">Users</a></li>
+            <li><a href="#">Orders</a></li>
+            <li><a href="#">Products</a></li>
+        </ul>
+    </div>
+    <div  id="users">
+        <table class="bigTable" id="user"></table>
+    </div>
+    <div id="orders">
+        <table class="bigTable" id="order"></table>
+    </div>
+    <div id="products">
+        <table class="bigTable" id="product"></table>
+    </div>
+    <div id="admins">
+        <table class="smallTable" id="admin"></table>
+    </div>
+    <script>
+        $.getJSON('http://edutor.cloud/generator/dashboard', function (data) {
+
+            for (k in data) {
+                for (j in data[k]) {
+                    var displayElement = document.getElementById("user");
+                    var trows = "";
+                    for (var i = 0; i < data.length - 3; i++) {
+                        trows += "<tr>";
+                        var keys = Object.keys(data[i]);
+                        for (var c = 0; c < keys.length; c++) {
+                            trows += "<td>" + data[i][keys[c]] + "</td>";
+                        }
+                        trows += "</tr>";
+                    }
+                    displayElement.innerHTML = trows;
+                }
+            }
+
+        })
+        $.getJSON('http://edutor.cloud/generator/dashboard', function (data) {
+
+            for (k in data) {
+                for (j in data[k]) {
+                    var displayElement = document.getElementById("order");
+                    var trows = "";
+                    for (var i = 1; i < data.length - 2; i++) {
+                        trows += "<tr>";
+                        var keys = Object.keys(data[i]);
+                        for (var c = 0; c < keys.length; c++) {
+                            trows += "<td>" + data[i][keys[c]] + "</td>";
+                        }
+                        trows += "</tr>";
+                    }
+                    displayElement.innerHTML = trows;
+                }
+            }
+
+        })
+        $.getJSON('http://edutor.cloud/generator/dashboard', function (data) {
+
+            for (k in data) {
+                for (j in data[k]) {
+                    var displayElement = document.getElementById("product");
+                    var trows = "";
+                    for (var i = 2; i < data.length - 1; i++) {
+                        trows += "<tr>";
+                        var keys = Object.keys(data[i]);
+                        for (var c = 0; c < keys.length; c++) {
+                            trows += "<td>" + data[i][keys[c]] + "</td>";
+                        }
+                        trows += "</tr>";
+                    }
+                    displayElement.innerHTML = trows;
+                }
+            }
+
+        })
+        $.getJSON('http://edutor.cloud/generator/dashboard', function (data) {
+
+            for (k in data) {
+                for (j in data[k]) {
+                    var displayElement = document.getElementById("admin");
+                    var trows = "";
+                    for (var i = 3; i < data.length; i++) {
+                        trows += "<tr>";
+                        var keys = Object.keys(data[i]);
+                        for (var c = 0; c < keys.length; c++) {
+                            trows += "<td>" + data[i][keys[c]] + "</td>";
+                        }
+                        trows += "</tr>";
+                    }
+                    displayElement.innerHTML = trows;
+                }
+            }
+
+        })
+
+    </script>
+</body>
+</html>
